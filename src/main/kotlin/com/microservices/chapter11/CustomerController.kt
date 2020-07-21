@@ -7,19 +7,17 @@ import java.util.concurrent.ConcurrentHashMap
 
 @RestController
 class CustomerController {
+  companion object {
+    val initialCustomers = arrayOf(Customer(1, "Kotlin"),
+        Customer(2, "Spring"),
+        Customer(3, "Microservice"),
+        Customer(4, "OpenShift"))
+    val customers = ConcurrentHashMap<Int, Customer>(initialCustomers.associateBy(Customer::id))
+  }
 
-    companion object {
-        val initialCustomers = arrayOf(
-                Customer(1, "Kotlin"),
-                Customer(2, "Spring"),
-                Customer(3, "Microservice")
-        )
-        val customers = ConcurrentHashMap<Int, Customer> (initialCustomers.associateBy(Customer::id))
-    }
+  @GetMapping("/customers")
+  fun getCustomers() = customers.values.toList()
 
-    @GetMapping("/customers")
-    fun getCustomers() = customers.values.toList()
-
-    @GetMapping("/customer/{id}")
-    fun getCustomer(@PathVariable id: Int) = customers[id]
+  @GetMapping("/customer/{id}")
+  fun getCustomer(@PathVariable id: Int) = customers[id]
 }
