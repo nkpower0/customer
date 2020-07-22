@@ -22,16 +22,18 @@ class CustomerControllerTest {
   @Test
   fun `we should get the customer list`() {
     mockMvc.perform(get("/customers"))
-        .andExpect(status().isOk)
-        .andExpect(jsonPath("\$[0].id").value(1))
-        .andExpect(jsonPath("\$[0].name").value("Kotlin"))
-        .andExpect(jsonPath("\$[1].id").value(2))
-        .andExpect(jsonPath("\$[1].name").value("Spring"))
-        .andExpect(jsonPath("\$[2].id").value(3))
-        .andExpect(jsonPath("\$[2].name").value("Microservice"))
-        .andExpect(jsonPath("\$[3].id").value(4))
-        .andExpect(jsonPath("\$[3].name").value("OpenShift"))
-        .andDo(print())
+            .andExpect(status().isOk)
+            .andExpect(jsonPath("\$[0].id").value(1))
+            .andExpect(jsonPath("\$[0].name").value("Kotlin"))
+            .andExpect(jsonPath("\$[1].id").value(2))
+            .andExpect(jsonPath("\$[1].name").value("Spring"))
+            .andExpect(jsonPath("\$[2].id").value(3))
+            .andExpect(jsonPath("\$[2].name").value("Microservice"))
+            .andExpect(jsonPath("\$[3].id").value(4))
+            .andExpect(jsonPath("\$[3].name").value("OpenShift"))
+            .andExpect(jsonPath("\$[3].id").value(5))
+            .andExpect(jsonPath("\$[3].name").value("Kakaopay"))
+            .andDo(print())
   }
 
   @Test
