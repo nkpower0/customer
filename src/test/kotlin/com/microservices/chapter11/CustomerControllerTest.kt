@@ -39,9 +39,9 @@ class CustomerControllerTest {
   @Test
   fun `we should get a customer by id`() {
     mockMvc.perform(get("/customer/1"))
-        .andExpect(status().isOk)
-        .andExpect(jsonPath("\$.id").value(1))
-        .andExpect(jsonPath("\$.name").value("Kotlin"))
-        .andDo(print())
+            .andExpect(status().isOk)
+            .andExpect(jsonPath("\$.id").value(1))
+            .andExpect(jsonPath("\$.name").value("Kotlin"))
+            .andDo(print())
   }
 }
